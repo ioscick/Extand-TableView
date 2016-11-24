@@ -10,9 +10,9 @@
 
 @interface BaseDataModel : NSObject
 
-@property (strong, nonatomic) NSArray *dataArray;
+@property (copy, nonatomic) NSArray *dataArray;
 
-@property (strong, nonatomic) NSString *name;
+@property (copy, nonatomic) NSString *name;
 
 @property (assign, nonatomic) BOOL isOpen;
 

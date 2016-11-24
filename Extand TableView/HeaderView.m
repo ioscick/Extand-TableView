@@ -10,12 +10,16 @@
 
 @implementation HeaderView
 
-- (instancetype)initWithFrame:(CGRect)frame{
+- (instancetype)initWithFrame:(CGRect)frame IsOpen:(BOOL)isOpen {
     if (self = [super initWithFrame:frame]) {
-        self.isOpen = NO;
+        self.backgroundColor = [UIColor whiteColor];
         [self addSubview:self.nameLabel];
         [self addSubview:self.imageView];
         [self addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapOpen)]];
+        self.isOpen = isOpen;
+        if (self.isOpen) {
+            _imageView.transform = CGAffineTransformRotate(_imageView.transform, M_PI / 2);
+        }
     }
     return self;
 }
@@ -34,6 +38,7 @@
     }
     return _nameLabel;
 }
+
 
 - (void)tapOpen{
     if (_isOpen) {

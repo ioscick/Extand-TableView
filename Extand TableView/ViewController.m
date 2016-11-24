@@ -38,7 +38,7 @@
 }
 
 - (void)make_date{
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 10; i++) {
         BaseDataModel *model = [[BaseDataModel alloc] init];
         model.isOpen = NO;
         NSString *name = [NSString stringWithFormat:@"Section:%d",i];
@@ -56,6 +56,8 @@
 - (void)openSection:(NSInteger)section{
     BaseDataModel *model = self.dataArray[section];
     model.isOpen = !model.isOpen;
+    
+    
     NSMutableArray *indexArray = [NSMutableArray arrayWithCapacity:10];
     for (int i = 0; i < model.dataArray.count; i++) {
         NSIndexPath *indexpath = [NSIndexPath indexPathForRow:i inSection:section];
@@ -93,10 +95,11 @@
     return _tableView;
 }
 
+#pragma mark - tableView delegate
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     BaseDataModel *model = [self.dataArray objectAtIndex:section];
-    
-    HeaderView *headerView = [[HeaderView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 40)];
+    NSLog(@"%d", (int)section);
+    HeaderView *headerView = [[HeaderView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 40) IsOpen:model.isOpen];
     headerView.nameLabel.text = model.name;
     headerView.section = section;
     

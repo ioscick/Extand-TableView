@@ -23,4 +23,6 @@ typedef void(^closeBlock)(NSInteger section);
 @property (copy, nonatomic) openBlock openblock;
 @property (copy, nonatomic) closeBlock closeblock;
 
+- (instancetype)initWithFrame:(CGRect)frame IsOpen:(BOOL)isOpen;
+
 @end
